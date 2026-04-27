@@ -1,0 +1,7 @@
+node_modules
+dist
+.env
+data/uploads/*
+!data/uploads/.gitkeep
+public/maps/*
+!public/maps/.gitkeep

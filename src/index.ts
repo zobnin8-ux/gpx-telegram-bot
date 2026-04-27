@@ -15,7 +15,11 @@ function requireEnv(name: string): string {
 
 async function main() {
   const BOT_TOKEN = requireEnv("BOT_TOKEN");
-  const BASE_URL = requireEnv("BASE_URL");
+  const BASE_URL = (process.env.BASE_URL || process.env.RENDER_EXTERNAL_URL || "").trim();
+  if (!BASE_URL) {
+    console.error("Missing BASE_URL (and RENDER_EXTERNAL_URL is not set).");
+    process.exit(1);
+  }
   const PORT = parseInt(process.env.PORT || "3000", 10);
 
   const root = process.cwd();
